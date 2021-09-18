@@ -3,6 +3,7 @@
 <head>
     <title>Juego de Apuntado</title>
     <script src="Codigo/Carta.js"></script>
+    <link href="Estilos/Estilos.css" rel="stylesheet" type="text/css" >
 
     <script>
         //Vector que almacenará las cartas
@@ -71,7 +72,7 @@
 </head>
 
 <body>
-    <div style="top: 100px;position: absolute;width: 100%;text-align: center;">
+    <div class="botones">
         <button onclick="repartir();">
             <img src="Imagenes/Repartir.png">
         </button>
@@ -80,8 +81,7 @@
         </button>
     </div>
 
-    <div id="mesa"
-        style="left: 15%; bottom: 100px;position: absolute;width: 70%; height: 200px; text-align: center; background-color: darkgreen; vertical-align: middle;text-align: center;">
+    <div id="mesa">
 
     </div>
 </body>

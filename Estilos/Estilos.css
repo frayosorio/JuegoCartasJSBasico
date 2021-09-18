@@ -1,0 +1,19 @@
+.botones{
+    top: 100px;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+
+#mesa{
+    left: 15%; 
+    bottom: 100px;
+    position: absolute;
+    width: 70%; 
+    height: 200px; 
+    text-align: center; 
+    background-color: rgb(35, 0, 100); 
+    vertical-align: middle;
+    text-align: center;
+}
