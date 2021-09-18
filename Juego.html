@@ -1,0 +1,89 @@
+<html>
+
+<head>
+    <title>Juego de Apuntado</title>
+    <script src="Codigo/Carta.js"></script>
+
+    <script>
+        //Vector que almacenará las cartas
+        var cartas = [];
+
+        function repartir() {
+            //Obtener el objeto para despliegue de las cartas
+            var mesa = document.getElementById("mesa");
+
+            if (cartas.length > 0) {
+                for (var i = 0; i < 10; i++) {
+                    var obj = document.getElementById("carta" + i.toString());
+                    obj.remove();
+                }
+            }
+            cartas = [];
+            for (var i = 0; i < 10; i++) {
+                //crear una instancia de CARTA
+                var carta = new Carta();
+                //Agregar la carta al vector
+                cartas.push(carta);
+
+
+                //Crear una elemento para mostrar la imagen de la carta
+                var imgCarta = document.createElement("img");
+                //Asignar la imagen de la carta obtenida
+                imgCarta.src = carta.obtenerImagen();
+                imgCarta.id = "carta" + i.toString();
+                //agregar la imagen al objeto de despliegue
+                mesa.appendChild(imgCarta);
+            }
+        }//repartir
+
+
+        function chequear() {
+
+            if (cartas.length > 0) {
+                //iniciar contadores de nombres de carta en 0
+                var contador = [];
+                for (var i = 0; i < 13; i++) {
+                    contador.push(0);
+                }
+                //recorrer cada carta e incrementar el contador respectivo de nombre
+                for (var i = 0; i < cartas.length; i++) {
+                    contador[cartas[i].obtenerIndiceNombre()]++;
+                }
+
+                var grupo = ["vacío", "non", "par", "terna", "cuarta", "quinta", "sexta", "septima"];
+                var nombre = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+
+                var mensaje = "Se encontraron los siguientes grupos";
+                for (var i = 0; i < 13; i++) {
+                    if (contador[i] >= 2) {
+                        mensaje += "\n" + grupo[contador[i]] + " de " + nombre[i];
+                    }
+                }
+
+                window.alert(mensaje);
+            }
+            else {
+                window.alert("No hay cartas repartidas");
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <div style="top: 100px;position: absolute;width: 100%;text-align: center;">
+        <button onclick="repartir();">
+            <img src="Imagenes/Repartir.png">
+        </button>
+        <button onclick="chequear();">
+            <img src="Imagenes/Verificar.png">
+        </button>
+    </div>
+
+    <div id="mesa"
+        style="left: 15%; bottom: 100px;position: absolute;width: 70%; height: 200px; text-align: center; background-color: darkgreen; vertical-align: middle;text-align: center;">
+
+    </div>
+</body>
+
+</html>
